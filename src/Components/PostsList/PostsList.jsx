@@ -6,7 +6,7 @@ export default function postsList() {
     const [posts, setPosts] = useState(null)
     async function getPosts() {
         try {
-            const { data: { posts } } = await axios.get('https://linked-posts.routemisr.com/posts', { headers: { token: localStorage.getItem('token') } })
+            const { data: { posts } } = await axios.get(`${import.meta.env.VITE_BASE_URL}/posts`, { headers: { token: localStorage.getItem('token') } })
             console.log(posts);
             setPosts(posts)
         } catch (error) {

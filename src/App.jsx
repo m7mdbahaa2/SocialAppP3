@@ -13,6 +13,7 @@ import Counter from './Components/Pages/Counter/Counter';
 import AuthContextProvider, { AuthContext } from './Components/Context/AuthContext';
 import ProtectedRoutes from './Components/ProtectRoutes/ProtectedRoutes';
 import ProtectedAuthRoutes from './Components/ProtectRoutes/ProtectedAuthRoutes';
+import PostDetails from './Components/Pages/PostDetails/PostDetails';
 
 function App() {
 
@@ -20,7 +21,7 @@ function App() {
     path: "/",
     element: <Layout />,
     children: [{
-      index: '/',
+      index: true,
       element: <Home />
     }, {
       path: 'about',
@@ -28,11 +29,16 @@ function App() {
         <About />
       </ProtectedRoutes>
     }, {
-      path: 'posts',
+      path: '/posts',
       element: <ProtectedRoutes>
         <Posts />
       </ProtectedRoutes>
     }, {
+      path: "/posts/:id",
+      element: <ProtectedRoutes>
+        <PostDetails/>
+      </ProtectedRoutes>
+    },{
       path: 'notfound',
       element: <NotFound />
     }, {
@@ -52,7 +58,9 @@ function App() {
       </ProtectedRoutes>
     }, {
       path: 'counter',
-      element: <Counter />
+      element: <ProtectedAuthRoutes>
+        <Counter />
+      </ProtectedAuthRoutes>
     },]
   }])
 

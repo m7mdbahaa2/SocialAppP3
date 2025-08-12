@@ -16,7 +16,7 @@ export default function Add() {
 
 
         try {
-            await axios.post('https://linked-posts.routemisr.com/posts', formData, {
+            await axios.post(`${import.meta.env.VITE_BASE_URL}/posts`, formData, {
                 headers: { token: localStorage.getItem('token') }
             })
             console.log(data);
