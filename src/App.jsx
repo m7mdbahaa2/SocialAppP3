@@ -22,7 +22,9 @@ function App() {
     element: <Layout />,
     children: [{
       index: true,
-      element: <Home />
+      element: <ProtectedRoutes>
+        <Posts />
+      </ProtectedRoutes>
     }, {
       path: 'about',
       element: <ProtectedRoutes>

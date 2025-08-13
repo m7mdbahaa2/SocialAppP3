@@ -33,19 +33,27 @@ export default function PostItem({ post }) {
 
                 <div className='flex items-center justify-between'>
         <AiFillLike/>
-<div className='flex items-center gap-2'>
+<div className='flex flex-col gap-2'>
     <FaComment />
     {comments&& comments.length}
     {/* comments */}
 
 
 
-
 </div>
-<Link to='/posts/details'>
+<Link to={`/posts/${_id}`}>
 <FaShare/>
 </Link>
+
                 </div>
+{comments&&comments.length>0&&comments.map(comment=><CommentPostHeader user={
+    {...comment.commentCreator,        // 3mltha .... 3shan 3ayz kol ely feha bdl ma a3mlhom 5twa 5twa
+    createdAt:comment.createdAt,
+    body:comment.content}}
+    isComment={true}    // mktooob f el 7eta de 3shan ykon f 7alt en 3ndy comment msh bara elmokarna w kda m3moloo destructuring f el component CommentPostHeader
+    />)
+    }
+
             </Card>
         </>
     )

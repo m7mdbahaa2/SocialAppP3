@@ -1,6 +1,6 @@
 
 import axios from "axios";
-import { Alert, Button, Checkbox, Label, Radio, TextInput } from "flowbite-react";
+import { Alert, Button, Checkbox, Datepicker, Label, Radio, TextInput } from "flowbite-react";
 import { useForm } from "react-hook-form";
 import { Link, useNavigate } from "react-router-dom";
 // import Link from "next/link";
@@ -111,7 +111,9 @@ export default function Register() {
                     <div className="mb-2 block">
                         <Label htmlFor="dateOfBirth">Enter your birthday date</Label>
                     </div>
-                    <TextInput {...register('dateOfBirth')} id="dateOfBirth" type="date" placeholder="Confirm your password" shadow />
+
+<Datepicker />
+                    {/* <TextInput {...register('dateOfBirth')} id="dateOfBirth" type="date" placeholder="Confirm your password" shadow /> */}
                 </div>
                 {/* ************************* Gender ************************** */}
                 <Label htmlFor="gender">Gender</Label>
