@@ -5,6 +5,7 @@ import { FaShare } from "react-icons/fa";
 import { FaComment } from "react-icons/fa6";
 import { Link } from "react-router-dom";
 import CommentPostHeader from "../Pages/Posts/CommentPostHeader";
+import AddComment from "../addComment/addComment";
 
 export default function PostItem({ post, showAllComments = false }) {
   const {
@@ -34,7 +35,7 @@ export default function PostItem({ post, showAllComments = false }) {
 
         <CommentPostHeader user={{ name, photo, createdAt, body }} />
         {/* body */}
-        <img src={image} alt={body} />
+        {image && <img src={image} className="h-96 object-contain" alt={body} />}
 
         {/* footer */}
 
@@ -66,16 +67,17 @@ export default function PostItem({ post, showAllComments = false }) {
             </>
           ) : (
             <>
-                <CommentPostHeader
-                  user={{
-                    ...comments[0].commentCreator, // c3mltha .... 3shan 3ayz kol ely feha bdl ma a3mlhom 5twa 5twa
-                    createdAt: comments[0].createdAt,
-                    body: comments[0].content,
-                  }}
-                  isComment={true} // mktooob f el 7eta de 3shan ykon f 7alt en 3ndy comment msh bara elmokarna w kda m3moloo destructuring f el component CommentPostHeader
-                />
+              <CommentPostHeader
+                user={{
+                  ...comments[comments.length - 1].commentCreator, // c3mltha .... 3shan 3ayz kol ely feha bdl ma a3mlhom 5twa 5twa
+                  createdAt: comments[comments.length - 1].createdAt,
+                  body: comments[comments.length - 1].content,
+                }}
+                isComment={true} // mktooob f el 7eta de 3shan ykon f 7alt en 3ndy comment msh bara elmokarna w kda m3moloo destructuring f el component CommentPostHeader
+              />
             </>
           ))}
+        <AddComment post={_id} />
       </Card>
     </>
   );

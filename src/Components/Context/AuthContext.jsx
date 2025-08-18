@@ -6,6 +6,7 @@ export const AuthContext = createContext(null)
 export default function AuthContextProvider({ children }) {
 
     const [token, setToken] = useState(null);
+    const [userData, setUserData] = useState(null)
     // const navigate = useNavigate()
 
 
@@ -25,7 +26,7 @@ export default function AuthContextProvider({ children }) {
 
     return (
         <>
-            <AuthContext.Provider value={{ token, setToken, LogOut }}>
+            <AuthContext.Provider value={{ token, setToken, LogOut ,userData, setUserData }}>
                 {children}
             </AuthContext.Provider>
         </>

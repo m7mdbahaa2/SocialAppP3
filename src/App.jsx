@@ -14,6 +14,12 @@ import AuthContextProvider, { AuthContext } from './Components/Context/AuthConte
 import ProtectedRoutes from './Components/ProtectRoutes/ProtectedRoutes';
 import ProtectedAuthRoutes from './Components/ProtectRoutes/ProtectedAuthRoutes';
 import PostDetails from './Components/Pages/PostDetails/PostDetails';
+import { ToastContainer } from 'react-toastify';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import { TanStackDevtools } from '@tanstack/react-devtools';
+
+
+const queryClient = new QueryClient()
 
 function App() {
 
@@ -38,9 +44,9 @@ function App() {
     }, {
       path: "/posts/:id",
       element: <ProtectedRoutes>
-        <PostDetails/>
+        <PostDetails />
       </ProtectedRoutes>
-    },{
+    }, {
       path: 'notfound',
       element: <NotFound />
     }, {
@@ -68,11 +74,16 @@ function App() {
 
   return (
     <>
-      <AuthContextProvider>
-        <CounterContextProvider>
-          <RouterProvider router={router} />
-        </CounterContextProvider>
-      </AuthContextProvider>
+
+      <QueryClientProvider client={queryClient}>
+        <AuthContextProvider>
+          <CounterContextProvider>
+            <RouterProvider router={router} />
+            <ToastContainer />
+            <TanStackDevtools />
+          </CounterContextProvider>
+        </AuthContextProvider>
+      </QueryClientProvider>
     </>
   )
 }

@@ -1,6 +1,6 @@
 import React from 'react'
-import PostsList from './../../postsList/PostsList';
 import Add from '../../Add/Add';
+import PostsList from './../../PostsList/PostsList';
 
 export default function Posts() {
     return (
