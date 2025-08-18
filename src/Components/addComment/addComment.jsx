@@ -31,7 +31,7 @@ export default function AddComment({ post }) {
 
     return (
         <form onSubmit={handleSubmit(mutate)} className="flex flex-col gap-4">
-            <textarea  {...register("content", { required: true })} id="Comment" type="text" placeholder='lsa vid 13 & 15 bta3 el comments mshoftoosh w mtb2tsh 3leh' className="flex-grow" required />
+            <textarea  {...register("content", { required: true })} id="Comment" type="text" placeholder='lsa vid 13 bta3 el comments feh moshkla w mtb2tsh 3leh' className="flex-grow" required />
             <AppButton isLoading={isPending} disabled={!isValid} type="submit">Add Comment</AppButton>
         </form>
     )
